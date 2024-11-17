@@ -1,0 +1,347 @@
+/**GLOBAL STYLES**/
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #a0aed8;
+  color: var(--text-color);
+}
+
+/*root is like "main" and these are the original VITE styles; customized in App.css*/
+:root {
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;  
+  --primary-color: #2C3E50;
+  --secondary-color: #3498DB;
+  --accent-color: #E67E22;
+  --background-color: #F5F7FA;
+  --card-background: #FFFFFF;
+  --text-color: #2C3E50;
+  --hover-color: #E67E22;
+}
+
+
+h1 {
+  font-size: 3.5em;
+  line-height: 1.1;
+  text-align: center;
+  font-weight: 400;
+}
+
+h3 {
+  text-align: center;
+}
+
+
+h5 {
+  margin: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--secondary-color);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--hover-color);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.coffee-img {
+  height: 60px;
+  width: 217px;
+}
+
+.coffee-div {
+  display: flex;
+  justify-content: center;
+}
+
+.resources {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.search {
+  display: inline-flex;
+  width: 30%;
+  justify-content: center;
+}
+
+.filters {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: 15px 0;
+}
+
+/*Filter Chip Styles*/
+.filter-div {
+  display: inline-flex;
+  align-items: center;
+  margin: 6px;
+}
+
+label:focus-visible {
+  outline: 3px solid purple;
+}
+
+.checkbox { 
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-family: "Prompt", sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin: 6px;
+  background-color: var(--primary-color);
+  box-shadow: none;
+  cursor: pointer;
+  color: white;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+
+.checked-styles {
+  background-color: var(--accent-color);
+}
+
+.unchecked-styles {
+  background-color: #453E4F;
+  transition: background-color 0.2s;
+}
+
+
+.checked-styles:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+}
+  
+.unchecked-styles:hover {
+  background-color: #cac4d1;
+}
+
+
+/*Checkmark Styles*/
+
+.checkbox > input {
+  display: none;
+
+}
+
+.checkbox > input:checked {
+  border: none;
+  display: none;
+  background-color: #e1b14c;
+}
+
+.checkbox > input:checked + span::before {
+  content: '\2713';
+  display: inline-block;
+  text-align: center;
+  color: black;
+  top: 0.1rem;
+  margin-right: 8px;
+}
+
+.checkbox > input:active {
+  border: none;
+}
+
+
+/*Button styles*/
+
+button {
+  padding: 3px 6px;
+  border-radius: 5px;
+  font-family: "Prompt", sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  margin: 5px;
+  border: 2px solid darkgray;
+  background-color:#4f81d7;
+  
+}
+
+button:hover {
+  border: 2px solid rgb(33, 27, 33);
+}
+
+button:active {
+  background-color: gray;
+}
+
+/*Style card section*/
+#cards-section {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+
+/*Styles tags in resource card*/
+
+#tagsContainer ul {
+  padding: 0;
+}
+
+#tagsContainer ul li {
+  background-color: var(--background-color);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin: 5px;
+  display: inline-block;
+  font-size: 0.9em;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+#tagsContainer ul li:hover {
+  background-color: var(--secondary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+
+/*Styles resource card*/
+.card {
+  width: 320px;
+  min-height: 300px;
+  margin: 0;
+  padding: 20px;
+  border-radius: 30px;
+  background-color: var(--card-background);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid #e1e1e1;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.animate.pop {
+  animation-duration: 0.5s;
+  animation-name: animate-pop;
+  animation-timing-function: cubic-bezier(.26, .53, .74, 1.48);
+}
+
+@keyframes animate-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+/*footer*/
+#footer {
+  background-color: var(--primary-color);
+  width: 100%;
+  border-radius: 0;
+  color: lavenderblush;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 40px;
+}
+
+#footer a:hover {
+  text-decoration: none;
+}
+
+i:hover {
+  color: #AC80A0;
+}
+
+i {
+  margin-right: 15px;
+  color: lavenderblush;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #333;
+    background-color:#E8EFF7;
+  }
+
+  a:hover {
+    color: #e1b14c;
+  }
+
+  /* Possible to-do: make cards clickable and change background on hover */
+  a:hover #resource {
+    background-color: lightsteelblue;
+  }
+
+  button {
+    background-color:lightgray;
+  }
+} 
+
+
+@media (max-width: 1100px) {
+  #cards-section {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  #cards-section {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+  
+  .card {
+    width: calc(50% - 2rem);
+  }
+}
+
+@media (max-width: 440px) {
+  .card {
+    width: 100%;
+    min-height: 280px;
+    padding: 15px;
+  }
+}
+
+
